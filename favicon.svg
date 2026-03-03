@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Explain Yourself favicon</title>
+  <desc id="desc">Stylized EY monogram in a rounded square.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0ea5e9" />
+      <stop offset="55%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#ea580c" />
+    </linearGradient>
+  </defs>
+  <rect x="8" y="8" width="112" height="112" rx="28" fill="url(#bg)" />
+  <path d="M30 38h42v14H46v12h22v14H46v24H30V38Zm48 0h18l10 16 10-16h18L106 80v22H90V80L78 62V38Z" fill="#fff"/>
+</svg>
