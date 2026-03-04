@@ -1,0 +1,66 @@
+---
+import {
+  APPLE_APPSTORE_URL,
+  APP_STORE_READY,
+  GOOGLE_PLAY_URL,
+  THIRD_STORE_NAME,
+  THIRD_STORE_READY,
+  THIRD_STORE_URL
+} from "../consts";
+
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+const wrapClass = compact ? "gap-3" : "gap-4";
+const googlePlayReady = GOOGLE_PLAY_URL.trim() !== "" && GOOGLE_PLAY_URL !== "#";
+---
+
+<div class={`flex flex-wrap items-center justify-center ${wrapClass}`}>
+  {googlePlayReady ? (
+    <a class="store-button focus-ring" href={GOOGLE_PLAY_URL} target="_blank" rel="noreferrer">
+      <span class="icon-chip" aria-hidden="true">▶</span>
+      <span>
+        <span class="small">Available Now</span>
+        <span class="big">Google Play</span>
+      </span>
+    </a>
+  ) : (
+    <span class="store-button" aria-disabled="true">
+      <span class="icon-chip" aria-hidden="true">▶</span>
+      <span>
+        <span class="small">Coming Soon</span>
+        <span class="big">Google Play (Coming Soon)</span>
+      </span>
+    </span>
+  )}
+
+  {APP_STORE_READY ? (
+    <a class="store-button focus-ring" href={APPLE_APPSTORE_URL} target="_blank" rel="noreferrer">
+      <span class="icon-chip" aria-hidden="true">◆</span>
+      <span>
+        <span class="small">Now on iPhone</span>
+        <span class="big">App Store</span>
+      </span>
+    </a>
+  ) : (
+    <span class="store-button" aria-disabled="true">
+      <span class="icon-chip" aria-hidden="true">◆</span>
+      <span>
+        <span class="small">Coming Soon</span>
+        <span class="big">App Store</span>
+      </span>
+    </span>
+  )}
+
+  {THIRD_STORE_READY && (
+    <a class="store-button focus-ring" href={THIRD_STORE_URL} target="_blank" rel="noreferrer">
+      <span class="icon-chip" aria-hidden="true">⬢</span>
+      <span>
+        <span class="small">Optional Platform</span>
+        <span class="big">{THIRD_STORE_NAME}</span>
+      </span>
+    </a>
+  )}
+</div>
