@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SUPPORT_EMAIL } from "../consts";
+---
+
+<BaseLayout
+  title="Privacy | Explain Yourself"
+  description="Privacy details for the Explain Yourself app and marketing website."
+  path="/privacy"
+>
+  <section class="py-14 sm:py-20">
+    <div class="section-frame max-w-4xl">
+      <div class="section-panel rounded-[2rem] p-6 shadow-panel sm:p-10">
+        <span class="eyebrow">Privacy</span>
+        <h1 class="display-title mt-5 text-4xl font-black sm:text-6xl">Privacy policy</h1>
+        <div class="legal-copy mt-8">
+          <p>
+            Explain Yourself is designed as a simple consumer game experience. No account is required to use the app, and the default expectation is that gameplay data stays on your device.
+          </p>
+          <h2>What we collect</h2>
+          <p>
+            This website stores local preferences such as dark mode and cookie consent. The app itself is intended to work without collecting personal profile data, and no account creation is required.
+          </p>
+          <h2>How your data is used</h2>
+          <p>
+            Preferences stored by the website are used only to remember your display choices on this device. The app is positioned so that prompts, round state, and local settings remain on-device unless you later add a clearly disclosed feature that changes that behavior.
+          </p>
+          <h2>Sales and sharing</h2>
+          <p>
+            We do not sell personal data. We do not market this app as a data brokerage or ad-targeting product.
+          </p>
+          <h2>Your choices</h2>
+          <ul>
+            <li>You can clear local website cookies in your browser at any time.</li>
+            <li>You can uninstall the app to remove locally stored app data from your device.</li>
+            <li>You can contact support if you have questions about future updates or privacy changes.</li>
+          </ul>
+          <h2>Contact</h2>
+          <p>
+            For privacy questions, contact <a class="underline" href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
