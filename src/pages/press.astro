@@ -1,0 +1,81 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE_DESCRIPTION, SUPPORT_EMAIL } from "../consts";
+
+const assetBase = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+---
+
+<BaseLayout
+  title="Press | Explain Yourself"
+  description="Press resources and media positioning for Explain Yourself."
+  path="/press"
+>
+  <section class="py-14 sm:py-20">
+    <div class="section-frame">
+      <div class="section-panel rounded-[2rem] p-6 shadow-panel sm:p-10">
+        <span class="eyebrow">Press</span>
+        <div class="mt-5 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div class="max-w-3xl">
+            <h1 class="display-title text-4xl font-black sm:text-6xl">Press resources for Explain Yourself</h1>
+            <p class="mt-4 text-base text-[color:var(--muted)]">{SITE_DESCRIPTION}</p>
+          </div>
+          <a class="focus-ring inline-flex min-h-[3.5rem] items-center justify-center rounded-2xl px-6 text-sm font-semibold text-white" href={`${assetBase}press-kit.zip`} style="background: linear-gradient(135deg, #0f766e, #2563eb);">
+            Download Press Kit
+          </a>
+        </div>
+
+        <div class="mt-10 grid gap-6 lg:grid-cols-2">
+          <section class="section-panel rounded-[1.75rem] p-6">
+            <h2 class="text-2xl font-semibold">Short description</h2>
+            <p class="mt-3 text-sm text-[color:var(--muted)]">Explain Yourself is a fast mobile icebreaker game built around ridiculous prompts and even more ridiculous answers.</p>
+          </section>
+
+          <section class="section-panel rounded-[1.75rem] p-6">
+            <h2 class="text-2xl font-semibold">Long description</h2>
+            <p class="mt-3 text-sm text-[color:var(--muted)]">
+              Explain Yourself turns awkward pauses into instant party energy. Each round pushes players to defend bizarre answers under pressure, creating a loop that is fast to start, easy to replay, and perfect for casual groups, game nights, and late-night chaos.
+            </p>
+          </section>
+
+          <section class="section-panel rounded-[1.75rem] p-6">
+            <h2 class="text-2xl font-semibold">Feature bullets</h2>
+            <ul class="mt-4 list-disc space-y-2 pl-5 text-sm text-[color:var(--muted)]">
+              <li>Fast rounds with minimal setup</li>
+              <li>No account required</li>
+              <li>Designed for two players or full groups</li>
+              <li>Privacy-forward, on-device experience</li>
+              <li>Built for repeatable party sessions</li>
+            </ul>
+          </section>
+
+          <section class="section-panel rounded-[1.75rem] p-6">
+            <h2 class="text-2xl font-semibold">Contact info</h2>
+            <p class="mt-3 text-sm text-[color:var(--muted)]">Media and partnership inquiries: <a class="underline" href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a></p>
+          </section>
+        </div>
+
+        <div class="mt-10 grid gap-6 lg:grid-cols-2">
+          <section class="section-panel rounded-[1.75rem] p-6">
+            <h2 class="text-2xl font-semibold">App icon placeholder</h2>
+            <div class="mt-5 inline-flex h-28 w-28 items-center justify-center rounded-[1.75rem] border shadow-glow" style="border-color: var(--line); background: linear-gradient(145deg, rgba(34, 211, 238, 0.16), rgba(249, 115, 22, 0.14));">
+              <img src={`${assetBase}app-icon.svg`} alt="Explain Yourself app icon placeholder" class="h-20 w-20" />
+            </div>
+          </section>
+
+          <section class="section-panel rounded-[1.75rem] p-6">
+            <h2 class="text-2xl font-semibold">Screenshots placeholder</h2>
+            <div class="mt-5 grid gap-3 sm:grid-cols-3">
+              {Array.from({ length: 3 }, (_, index) => (
+                <div class="aspect-[10/18] rounded-3xl border p-3 text-center text-sm text-[color:var(--muted)]" style="border-color: var(--line); background: rgba(255, 255, 255, 0.04);">
+                  Shot {index + 1}
+                </div>
+              ))}
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
