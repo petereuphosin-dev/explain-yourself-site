@@ -1,0 +1,56 @@
+<div
+  id="cookie-banner"
+  class="fixed inset-x-4 bottom-4 z-50 hidden max-w-3xl rounded-3xl border p-4 shadow-panel sm:left-6 sm:right-6 sm:mx-auto"
+  style="border-color: var(--line); background: color-mix(in srgb, var(--panel-strong) 94%, transparent);"
+  role="dialog"
+  aria-live="polite"
+  aria-label="Cookie preferences"
+>
+  <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+    <div class="pr-2">
+      <p class="text-sm font-semibold">Cookie preferences</p>
+      <p class="mt-1 text-sm text-[color:var(--muted)]">We only use essential cookies for preferences like dark mode.</p>
+    </div>
+    <div class="flex flex-wrap items-center gap-2">
+      <button id="cookie-accept" class="focus-ring inline-flex min-h-[2.75rem] items-center justify-center rounded-2xl px-4 text-sm font-semibold text-white" type="button" style="background: linear-gradient(135deg, #0f766e, #0891b2);">
+        Accept
+      </button>
+      <button id="cookie-decline" class="focus-ring inline-flex min-h-[2.75rem] items-center justify-center rounded-2xl border px-4 text-sm font-semibold" type="button" style="border-color: var(--line);">
+        Decline
+      </button>
+      <button id="cookie-dismiss" class="focus-ring inline-flex h-11 w-11 items-center justify-center rounded-2xl border text-lg" type="button" aria-label="Dismiss cookie banner" style="border-color: var(--line);">
+        ×
+      </button>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (() => {
+    const banner = document.getElementById("cookie-banner");
+    const accept = document.getElementById("cookie-accept");
+    const decline = document.getElementById("cookie-decline");
+    const dismiss = document.getElementById("cookie-dismiss");
+    const cookieName = "cookieConsent";
+    const maxAge = 60 * 60 * 24 * 180;
+
+    const getCookie = (name) =>
+      document.cookie
+        .split("; ")
+        .find((row) => row.startsWith(`${name}=`))
+        ?.split("=")[1];
+
+    const setCookie = (value) => {
+      document.cookie = `${cookieName}=${value}; path=/; max-age=${maxAge}; SameSite=Lax`;
+      banner?.classList.add("hidden");
+    };
+
+    if (!getCookie(cookieName)) {
+      banner?.classList.remove("hidden");
+    }
+
+    accept?.addEventListener("click", () => setCookie("true"));
+    decline?.addEventListener("click", () => setCookie("false"));
+    dismiss?.addEventListener("click", () => banner?.classList.add("hidden"));
+  })();
+</script>
