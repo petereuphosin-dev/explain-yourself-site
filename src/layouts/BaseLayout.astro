@@ -1,0 +1,68 @@
+---
+import CookieBanner from "../components/CookieBanner.astro";
+import SiteNav from "../components/SiteNav.astro";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE } from "../consts";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  path?: string;
+}
+
+const { title = SITE_TITLE, description = SITE_DESCRIPTION, path = "" } = Astro.props;
+const canonical = new URL(path.replace(/^\//, ""), Astro.site ?? "https://username.github.io/repo-name/").toString();
+const ogImage = new URL("social-card.svg", Astro.site ?? "https://username.github.io/repo-name/").toString();
+const assetBase = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const faviconHref = `${assetBase}favicon.svg`;
+---
+
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#070B14" />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href={faviconHref} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <script is:inline>
+      (() => {
+        const root = document.documentElement;
+        const stored = localStorage.getItem("ey-theme");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const theme = stored || (prefersDark ? "dark" : "light");
+        root.classList.toggle("light", theme === "light");
+        root.classList.toggle("dark", theme === "dark");
+        root.dataset.theme = theme;
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <SiteNav />
+      <main>
+        <slot />
+      </main>
+      <CookieBanner />
+    </div>
+  </body>
+</html>
