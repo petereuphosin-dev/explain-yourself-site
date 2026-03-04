@@ -1,0 +1,50 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SUPPORT_EMAIL } from "../consts";
+---
+
+<BaseLayout
+  title="Terms | Explain Yourself"
+  description="Consumer app terms for Explain Yourself."
+  path="/terms"
+>
+  <section class="py-14 sm:py-20">
+    <div class="section-frame max-w-4xl">
+      <div class="section-panel rounded-[2rem] p-6 shadow-panel sm:p-10">
+        <span class="eyebrow">Terms</span>
+        <h1 class="display-title mt-5 text-4xl font-black sm:text-6xl">Terms of use</h1>
+        <div class="legal-copy mt-8">
+          <p>
+            These terms govern your use of the Explain Yourself app and this website. By downloading or using the app, you agree to use it only for lawful personal entertainment purposes.
+          </p>
+          <h2>License</h2>
+          <p>
+            We grant you a limited, non-exclusive, non-transferable license to install and use the app for personal, non-commercial use, subject to these terms.
+          </p>
+          <h2>Acceptable use</h2>
+          <ul>
+            <li>Do not attempt to reverse engineer or misuse the app in a way that harms other users.</li>
+            <li>Do not use the app for unlawful conduct, harassment, or abusive behavior.</li>
+            <li>Do not represent the app or its content as your own product.</li>
+          </ul>
+          <h2>Availability and changes</h2>
+          <p>
+            We may update, suspend, or discontinue features at any time. Store availability, supported platforms, and prompt packs may change without notice.
+          </p>
+          <h2>Disclaimers</h2>
+          <p>
+            The app and website are provided on an “as is” and “as available” basis, without warranties of any kind except where required by law.
+          </p>
+          <h2>Limitation of liability</h2>
+          <p>
+            To the fullest extent permitted by law, we are not liable for indirect, incidental, special, consequential, or punitive damages arising from your use of the app or site.
+          </p>
+          <h2>Contact</h2>
+          <p>
+            For questions about these terms, contact <a class="underline" href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
